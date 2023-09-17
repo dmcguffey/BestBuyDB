@@ -1,4 +1,6 @@
-﻿namespace BestBuyDB.Models
+﻿using System;
+
+namespace BestBuyDB.Models
 {
     public class Product
     {
