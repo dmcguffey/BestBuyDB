@@ -34,7 +34,8 @@ namespace BestBuyDB.Repositories
         //UPDATE
         public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _conn.Execute("UPDATE Products SET Name = @Name, Price = @Price, OnSale = @OnSale, StockLevel = @StockLevel WHERE ProductID = @id",
+                new { name = product.Name, price = product.Price, OnSale = product.OnSale, StockLevel = product.StockLevel, id = product.ProductID });
         }
 
         //DELETE

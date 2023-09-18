@@ -27,6 +27,7 @@ namespace BestBuyDB.Controllers
             repo.CreateProduct(product);
             return RedirectToAction("Index");
         }
+
         //view all products Page
         public IActionResult Index()
         {
@@ -38,6 +39,23 @@ namespace BestBuyDB.Controllers
         {
             var product = repo.GetProductById(id);
             return View(product);
+        }
+
+        //Update Product information
+        public IActionResult UpdateProduct(int id)
+        {
+            Product product = repo.GetProductById(id);
+            if(product ==  null)
+            {
+                return View("Product Not Found");
+            }
+            return View(product);
+        }
+        //insert new info into the database
+        public IActionResult InsertUpdatedInfo(Product product)
+        {
+            repo.UpdateProduct(product);
+            return RedirectToAction("ViewProduct", new {id = product.ProductID});
         }
     }
 }
