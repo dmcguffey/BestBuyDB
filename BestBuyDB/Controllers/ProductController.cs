@@ -1,4 +1,5 @@
-﻿using BestBuyDB.Repositories;
+﻿using BestBuyDB.Models;
+using BestBuyDB.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,17 @@ namespace BestBuyDB.Controllers
         public ProductController(IProductRepository repo)
         {
             this.repo = repo;
+        }
+        //Create Products
+        public IActionResult CreateProduct()
+        {
+            var product = repo.AssignCategory();
+            return View(product);
+        }
+        public IActionResult InsertNewProduct(Product product) 
+        {
+            repo.CreateProduct(product);
+            return RedirectToAction("Index");
         }
         //view all products Page
         public IActionResult Index()

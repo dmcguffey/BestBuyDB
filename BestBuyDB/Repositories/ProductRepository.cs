@@ -17,13 +17,14 @@ namespace BestBuyDB.Repositories
         //CREATE
         public void CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _conn.Execute("INSERT INTO products (Name, Price, CategoryID) VALUES (@name, @price, @categoryID);",
+                new { Name = product.Name, Price = product.Price, CategoryID = product.CategoryID });
         }
 
         //READ
         public IEnumerable<Product> GetAllProducts()
         {
-            return _conn.Query<Product>("SELECT * FROM PRODUCTS;");
+            return _conn.Query<Product>("SELECT * FROM Products;");
         }
         public Product GetProductById(int id)
         {
@@ -40,6 +41,19 @@ namespace BestBuyDB.Repositories
         public void DeleteProduct(Product product)
         {
             throw new NotImplementedException();
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            return _conn.Query<Category>("SELECT * FROM Categories;");
+        }
+        public Product AssignCategory()
+        {
+            //make list for what categories are available
+            var categoryList = GetCategories();
+            var product = new Product();
+            product.Categories = categoryList;
+            return product;
         }
     }
 }

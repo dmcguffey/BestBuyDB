@@ -15,5 +15,10 @@ namespace BestBuyDB.Repositories
         public void UpdateProduct(Product product);
         //DELETE
         public void DeleteProduct(Product product);
+
+        //Make a list of category names that the user can put on a product
+        public IEnumerable<Category> GetCategories();
+        public Product AssignCategory();
+
     }
 }
