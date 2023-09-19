@@ -57,5 +57,12 @@ namespace BestBuyDB.Controllers
             repo.UpdateProduct(product);
             return RedirectToAction("ViewProduct", new {id = product.ProductID});
         }
+
+        //Delete Product
+        public IActionResult DeleteProduct(Product product)
+        {
+            repo.DeleteProduct(product);
+            return RedirectToAction("Index");
+        }
     }
 }

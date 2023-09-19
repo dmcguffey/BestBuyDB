@@ -41,9 +41,13 @@ namespace BestBuyDB.Repositories
         //DELETE
         public void DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            _conn.Execute("DELETE FROM Products WHERE ProductID = @id", new {id =  product.ProductID});
+            _conn.Execute("DELETE FROM Sales WHERE ProductID = @id", new { id = product.ProductID });
+            _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id", new { id = product.ProductID });
+
         }
 
+        //For obtaining a list of categories from categories table
         public IEnumerable<Category> GetCategories()
         {
             return _conn.Query<Category>("SELECT * FROM Categories;");
