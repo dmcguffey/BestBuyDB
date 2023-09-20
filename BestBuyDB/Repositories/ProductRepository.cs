@@ -30,6 +30,10 @@ namespace BestBuyDB.Repositories
         {
             return _conn.QuerySingle<Product>("SELECT * FROM PRODUCTS WHERE ProductID = @id", new { id = id });
         }
+        public IEnumerable<Product> GetProductsByCategory(int id)
+        {
+            return _conn.Query<Product>("SELECT * FROM PRODUCTS WHERE CategoryID = @id", new { id = id });
+        }
 
         //UPDATE
         public void UpdateProduct(Product product)

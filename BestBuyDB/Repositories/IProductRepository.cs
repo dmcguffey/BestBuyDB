@@ -11,6 +11,7 @@ namespace BestBuyDB.Repositories
         //READ
         public IEnumerable<Product> GetAllProducts();
         public Product GetProductById(int id);
+        public IEnumerable<Product> GetProductsByCategory(int id);
         //UPDATE
         public void UpdateProduct(Product product);
         //DELETE

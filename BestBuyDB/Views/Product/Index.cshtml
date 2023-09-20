@@ -6,6 +6,14 @@
     <a href="/Product/CreateProduct/">Create a New Product</a>
 </div>
 
+@using (Html.BeginForm("CategoryProducts", "Product", FormMethod.Get))
+{
+    <label for="CategoryID">Category ID</label>
+    <input type="number" id="CategoryID" name="CategoryID">
+    <button type="submit">Filter by Category</button>
+}
+<script src="~/js/site.js"></script>
+
 <table class="table">
     <tr>
        <th>ID number</th>
