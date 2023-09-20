@@ -54,8 +54,15 @@ namespace BestBuyDB.Controllers
         //insert new info into the database
         public IActionResult InsertUpdatedInfo(Product product)
         {
-            repo.UpdateProduct(product);
-            return RedirectToAction("ViewProduct", new {id = product.ProductID});
+            try
+            {
+                repo.UpdateProduct(product);
+                return RedirectToAction("ViewProduct", new {id = product.ProductID});
+            }
+            catch (Exception ex)
+            {
+                return View("Error on updating product information. Please try again.");
+            }
         }
 
         //Delete Product

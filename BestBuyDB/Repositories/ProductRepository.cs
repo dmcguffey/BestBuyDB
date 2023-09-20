@@ -44,7 +44,6 @@ namespace BestBuyDB.Repositories
             _conn.Execute("DELETE FROM Products WHERE ProductID = @id", new {id =  product.ProductID});
             _conn.Execute("DELETE FROM Sales WHERE ProductID = @id", new { id = product.ProductID });
             _conn.Execute("DELETE FROM Reviews WHERE ProductID = @id", new { id = product.ProductID });
-
         }
 
         //For obtaining a list of categories from categories table
